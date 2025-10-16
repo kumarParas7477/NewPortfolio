@@ -9,35 +9,98 @@ import Footer from './components/Footer';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    // Simulate loading progress
+    const interval = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setIsLoading(false), 500);
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 100);
 
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   }, []);
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-eggshell-800 to-eggshell-700 flex items-center justify-center">
-        <div className="text-center">
+      <div className="min-h-screen bg-dark-900 flex items-center justify-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 grid-bg opacity-10"></div>
+        
+        {/* Floating Orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-radial from-neon-cyan/20 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -180, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-radial from-neon-purple/20 to-transparent rounded-full blur-3xl"
+        />
+
+        <div className="relative text-center space-y-8">
+          {/* Logo */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="w-16 h-16 bg-gradient-to-r from-cambridge_blue-500 to-delft_blue-500 rounded-lg flex items-center justify-center mx-auto mb-4"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="inline-block"
           >
-            <span className="text-white font-bold text-2xl">P</span>
+            <div className="w-24 h-24 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-2xl flex items-center justify-center mx-auto animate-pulse-glow">
+              <span className="text-white font-bold text-5xl">P</span>
+            </div>
           </motion.div>
+
+          {/* Loading Text */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl font-semibold text-delft_blue-400"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="space-y-4"
           >
-            Loading...
+            <h2 className="text-3xl font-bold gradient-text">loading portfolio...</h2>
+            <p className="text-gray-400 font-mono text-sm">
+              {loadingProgress < 100 ? 'getting things ready ✨' : 'ready to roll! 🚀'}
+            </p>
+          </motion.div>
+
+          {/* Progress Bar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="w-64 mx-auto"
+          >
+            <div className="glass-card p-2 border border-neon-cyan/20">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${loadingProgress}%` }}
+                className="h-2 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full"
+              />
+            </div>
+            <p className="text-neon-cyan text-xs font-mono mt-2">{loadingProgress}%</p>
           </motion.div>
         </div>
       </div>
@@ -45,7 +108,12 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-eggshell-900">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-dark-900"
+    >
       <Navbar />
       <main>
         <Hero />
@@ -54,7 +122,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

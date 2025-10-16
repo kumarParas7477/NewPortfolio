@@ -2,133 +2,83 @@
 export const navLinks = [
   {
     id: "about",
-    title: "About",
+    title: "about",
   },
   {
     id: "work",
-    title: "Work",
+    title: "experience",
+  },
+  {
+    id: "contact",
+    title: "contact",
   },
 ];
 
-// Services (can be expanded later)
+// Services
 export const services = [
   {
     title: "Full-Stack Development",
     icon: "💻",
-    description: "Building end-to-end web applications using React, Node.js, TypeScript, and modern frameworks."
+    description: "Building end-to-end web apps that actually slap. React, Node.js, TypeScript - the whole tech stack goes brrr."
   },
   {
     title: "System Architecture",
     icon: "🏗️",
-    description: "Designing scalable and maintainable system architectures with best practices and modern patterns."
+    description: "Designing scalable systems that don't break when traffic spikes. Performance? Always optimized. Bugs? We don't know her."
   },
   {
     title: "Performance Optimization",
     icon: "⚡",
-    description: "Optimizing applications for better performance, faster load times, and improved user experience."
+    description: "Making slow apps go zoom zoom. Load times? Cut in half. User experience? *Chef's kiss*"
   },
   {
     title: "Team Leadership",
     icon: "👥",
-    description: "Leading development teams, mentoring junior developers, and driving technical decisions."
+    description: "Leading dev teams, mentoring juniors, and making sure the vibe stays immaculate while shipping features."
   }
 ];
 
 // Technologies
 export const technologies = [
-  {
-    name: "HTML 5",
-    icon: "🌐",
-  },
-  {
-    name: "CSS 3",
-    icon: "🎨",
-  },
-  {
-    name: "JavaScript",
-    icon: "📜",
-  },
-  {
-    name: "TypeScript",
-    icon: "🔷",
-  },
-  {
-    name: "React JS",
-    icon: "⚛️",
-  },
-  {
-    name: "Redux Toolkit",
-    icon: "🔄",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "🎯",
-  },
-  {
-    name: "Node JS",
-    icon: "🟢",
-  },
-  {
-    name: "Express.js",
-    icon: "🚀",
-  },
-  {
-    name: "MongoDB",
-    icon: "🍃",
-  },
-  {
-    name: "PostgreSQL",
-    icon: "🐘",
-  },
-  {
-    name: "Git",
-    icon: "📦",
-  },
-  {
-    name: "Docker",
-    icon: "🐳",
-  },
-  {
-    name: "AWS",
-    icon: "☁️",
-  },
+  { name: "HTML 5", icon: "🌐" },
+  { name: "CSS 3", icon: "🎨" },
+  { name: "JavaScript", icon: "📜" },
+  { name: "TypeScript", icon: "🔷" },
+  { name: "React JS", icon: "⚛️" },
+  { name: "Redux Toolkit", icon: "🔄" },
+  { name: "Tailwind CSS", icon: "🎯" },
+  { name: "Node JS", icon: "🟢" },
+  { name: "Express.js", icon: "🚀" },
+  { name: "MongoDB", icon: "🍃" },
+  { name: "PostgreSQL", icon: "🐘" },
+  { name: "Git", icon: "📦" },
+  { name: "Docker", icon: "🐳" },
+  { name: "AWS", icon: "☁️" },
 ];
 
 // Stats
 export const stats = [
-  {
-    value: "6+",
-    label: "Years Experience"
-  },
-  {
-    value: "10+",
-    label: "Projects Completed"
-  },
-  {
-    value: "6+",
-    label: "Team Members Led"
-  },
-  {
-    value: "100%",
-    label: "Client Satisfaction"
-  }
+  { value: "6+", label: "Years Experience" },
+  { value: "10+", label: "Projects Shipped" },
+  { value: "6+", label: "Team Members Led" },
+  { value: "100%", label: "Client Satisfaction" }
 ];
 
 // About content
 export const aboutContent = {
-  title: "About Me",
-  subtitle: "I'm a passionate Senior Software Engineer with a strong background in building scalable web applications, full-stack systems, and leading development teams.",
-  mainHeading: "Passionate about building exceptional software solutions",
-  description1: "With over 6 years of experience in software development, I've had the privilege of working with companies like JioHotstar, MakeMyTrip, Fewcents, and IBM. I specialize in full-stack development, React, Node.js, TypeScript, and system architecture, always striving to deliver solutions that not only meet requirements but exceed expectations.",
-  description2: "My journey has been marked by a commitment to continuous learning and innovation. I've led teams, mentored junior developers, and consistently delivered projects that drive business growth and technical excellence across the entire software stack.",
-  servicesHeading: "What I Do",
-  technologiesHeading: "Technologies I Work With",
-  projectsHeading: "Featured Projects"
+  title: "about me",
+  subtitle: "Building cool stuff on the internet since 2019. No cap, just clean code and good vibes.",
+  mainHeading: "code that hits different ✨",
+  description1: "Been in the game for 6+ years, working with companies like JioHotstar, MakeMyTrip, Fewcents, and IBM. I turn ideas into reality through clean, efficient code. Full-stack dev who actually enjoys both frontend and backend (we exist, fr fr).",
+  description2: "My vibe? Writing code so clean it makes other devs emotional. Leading teams, mentoring juniors, and shipping features that actually matter. When I'm not coding, I'm probably thinking about coding or looking for bugs that don't exist yet.",
+  servicesHeading: "what i do (aka superpowers)",
+  technologiesHeading: "tech stack (my weapons of choice)",
+  projectsHeading: "stuff i've built"
 };
 
 // Icons
 export const icons = {
-  bulletPoint: "•",
+  bulletPoint: "→",
   liveDemo: "🚀",
   sourceCode: "📁"
 };
@@ -139,50 +89,50 @@ export const experiences = [
     title: "Senior Software Engineer-Frontend",
     company_name: "JioHotstar",
     icon: "📺",
-    iconBg: "#383E56",
+    iconBg: "#1a1a24",
     date: "April 2024 - May 2024",
     points: [
-      "● Integrated midroll ads into Connected TV (CTV) platforms.",
-      "● Developed a caching mechanism to optimize the delivery of display ads.",
-      "● Enhancing the ad experience on the H5-TV React application for better performance and user engagement.",
+      "→ Built midroll ad integration for Connected TV platforms - making ads less annoying, one feature at a time",
+      "→ Created caching mechanism for display ads that actually works (performance go zoom)",
+      "→ Enhanced the H5-TV React app because someone has to make streaming better",
     ],
   },
   {
-    title: "Senior Frontend Engineer",
+    title: "Senior Software Engineer",
     company_name: "Makemytrip",
     icon: "✈️",
-    iconBg: "#E6DEDD",
+    iconBg: "#1a1a24",
     date: "May 2022 - April 2024",
     points: [
-      "● Created an integrated business library to enhance code management, efficiently address issues, and seamlessly implement features across various platforms and brands, resulting in a 30% reduction in development time.",
-      "● Crafted an automated script designed to seamlessly upload source map files from the React application to Sentry, thereby enhancing the debugging process and facilitating a more efficient issue tracking system.",
-      "● Engineered a consolidated npm package to merge UI designs across brand platforms, incorporating distinct hooks, themes, and brand elements. This integration catalyzed a remarkable 50% efficiency surge for QA and dev teams.",
-      "● Enhanced web applications by implementing ESLint to maintain code consistency, enhance code quality, and utilizing Husky pre-commit hooks for automated checks.",
-      "● Developed a caching middleware utilizing a fetch interceptor, tailored to optimize performance based on the unique identifier, bookingId.",
-      "● Migration of Webpack from version 3 to 5, integrating module federation, led to a notable 20% reduction in bundle size.",
+      "→ Built an integrated business library that cut dev time by 30% (efficiency szn)",
+      "→ Automated source map uploads to Sentry because manual work is for NPCs",
+      "→ Created a consolidated npm package that boosted QA/dev efficiency by 50% (big W)",
+      "→ Implemented ESLint + Husky pre-commit hooks to keep code quality immaculate",
+      "→ Developed caching middleware that actually caches stuff properly",
+      "→ Migrated Webpack 3 → 5 with module federation, reduced bundle size by 20% (lightweight era)",
     ],
   },
   {
     title: "Web Developer",
     company_name: "Fewcents",
     icon: "💰",
-    iconBg: "#383E56",
+    iconBg: "#1a1a24",
     date: "September 2021 - May 2022",
     points: [
-      "● Enhanced user experience by integrating three or more social login options, delivering smooth and effortless login capabilities, resulting in a notable 12% increase in login rates.",
-      "● Improved payment checkouts by seamlessly integrating Stripe, adding 6+ payment methods, and enabling transactions in 100+ currencies, leading to a significant doubling of conversion rates.",
-      "● Engineered a Common Script enabling real-time display of Tipjar or Paywall based on client parameters; integration led to a 40% increase in user engagement and a 25% surge in revenue.",
+      "→ Added social login options that increased login rates by 12% (convenience is key)",
+      "→ Integrated Stripe with 6+ payment methods in 100+ currencies (global domination vibes)",
+      "→ Built a Common Script that increased user engagement by 40% and revenue by 25% (stonks 📈)",
     ],
   },
   {
     title: "Application Developer",
     company_name: "IBM India",
     icon: "🔵",
-    iconBg: "#383E56",
+    iconBg: "#1a1a24",
     date: "July 2019 - September 2021",
     points: [
-      "● Effectively transitioned a Web Application from ActionScript to React, encompassing over 160 catalogs showcasing diverse AT&T Products.",
-      "● Collaborated closely with the frontend team to enhance application performance, achieving a 20% reduction in load times through code optimization, integration of native functionalities, and elimination of unnecessary dependencies.",
+      "→ Migrated ActionScript to React for 160+ catalogs (RIP Flash, you won't be missed)",
+      "→ Optimized app performance, achieved 20% faster load times (speed demon mode activated)",
     ],
   },
 ];
@@ -211,32 +161,22 @@ export const testimonials = [
 export const projects = [
   {
     name: "GiveHope - Donation App",
-    description: "A beautiful, modern donation app built with React and TypeScript that allows users to create fundraising campaigns and make donations to causes they care about. Features campaign creation, discovery, donation system, progress tracking, and responsive design with a positive, uplifting UI.",
+    description: "A sick donation platform where people can create campaigns and actually make a difference. Built with React, TypeScript, and good intentions. The UI? Absolutely fire. The experience? Smooth like butter.",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "typescript",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "react", color: "blue-text-gradient" },
+      { name: "typescript", color: "green-text-gradient" },
+      { name: "tailwind", color: "pink-text-gradient" },
     ],
     image: "💚",
     source_code_link: "https://github.com/kumarParas7477/donation-web-app",
     live_demo_link: "https://donation-web-app-lilac.vercel.app/",
     features: [
-      "Campaign Creation: Easy-to-use form to create new fundraising campaigns",
-      "Campaign Discovery: Browse and search through available campaigns", 
-      "Donation System: Simple donation process with suggested amounts",
-      "Progress Tracking: Visual progress bars showing campaign funding status",
-      "Responsive Design: Works perfectly on desktop and mobile devices",
-      "Positive UI: Subtle, uplifting design with positive color scheme"
+      "Campaign Creation: Easy-to-use form (actually intuitive, no cap)",
+      "Campaign Discovery: Browse campaigns without getting lost", 
+      "Donation System: Simple donation flow with suggested amounts",
+      "Progress Tracking: Visual progress bars that look good",
+      "Responsive Design: Works on all devices (yes, even your grandma's tablet)",
+      "Positive UI: Uplifting design that doesn't assault your eyes"
     ]
   },
 ];
-

@@ -7,74 +7,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        'eggshell': {
-          DEFAULT: '#f4f1de',
-          100: '#463f17',
-          200: '#8b7f2e',
-          300: '#c5b651',
-          400: '#dcd397',
-          500: '#f4f1de',
-          600: '#f6f3e3',
-          700: '#f8f6ea',
-          800: '#faf9f1',
-          900: '#fdfcf8'
+        // Dark cyber/vaporwave theme
+        dark: {
+          900: '#0a0a0f',
+          800: '#121218',
+          700: '#1a1a24',
+          600: '#252530',
+          500: '#2f2f3f',
         },
-        'burnt_sienna': {
-          DEFAULT: '#e07a5f',
-          100: '#36140a',
-          200: '#6c2715',
-          300: '#a23b1f',
-          400: '#d7502b',
-          500: '#e07a5f',
-          600: '#e79680',
-          700: '#edb1a0',
-          800: '#f3cbc0',
-          900: '#f9e5df'
+        // Neon cyan
+        neon: {
+          cyan: '#00f7ff',
+          blue: '#0096ff',
+          purple: '#b845ed',
+          pink: '#ff006e',
+          green: '#00ff9f',
+          yellow: '#ffea00',
         },
-        'delft_blue': {
-          DEFAULT: '#3d405b',
-          100: '#0c0d12',
-          200: '#181a25',
-          300: '#252737',
-          400: '#313349',
-          500: '#3d405b',
-          600: '#5a5e87',
-          700: '#7e83a9',
-          800: '#a9acc6',
-          900: '#d4d6e2'
-        },
-        'cambridge_blue': {
-          DEFAULT: '#81b29a',
-          100: '#17261f',
-          200: '#2f4c3e',
-          300: '#46725d',
-          400: '#5d987b',
-          500: '#81b29a',
-          600: '#9ac1ae',
-          700: '#b3d0c2',
-          800: '#cce0d7',
-          900: '#e6efeb'
-        },
-        'sunset': {
-          DEFAULT: '#f2cc8f',
-          100: '#442d08',
-          200: '#895b10',
-          300: '#cd8818',
-          400: '#eaac48',
-          500: '#f2cc8f',
-          600: '#f4d5a4',
-          700: '#f7e0bb',
-          800: '#faead1',
-          900: '#fcf5e8'
+        // Gradients
+        glow: {
+          cyan: 'rgba(0, 247, 255, 0.2)',
+          purple: 'rgba(184, 69, 237, 0.2)',
+          pink: 'rgba(255, 0, 110, 0.2)',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
-        'bounce-slow': 'bounce 2s infinite',
+        'bounce-slow': 'bounce 3s infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'float': 'float 6s ease-in-out infinite',
+        'slide-in-left': 'slideInLeft 0.5s ease-out',
+        'slide-in-right': 'slideInRight 0.5s ease-out',
+        'spin-slow': 'spin 8s linear infinite',
+        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         fadeIn: {
@@ -85,6 +55,43 @@ export default {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        glow: {
+          '0%': { 
+            boxShadow: '0 0 20px rgba(0, 247, 255, 0.5), 0 0 40px rgba(0, 247, 255, 0.3)',
+          },
+          '100%': { 
+            boxShadow: '0 0 30px rgba(0, 247, 255, 0.8), 0 0 60px rgba(0, 247, 255, 0.5)',
+          },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        slideInLeft: {
+          '0%': { transform: 'translateX(-100px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        pulseGlow: {
+          '0%, 100%': {
+            opacity: '1',
+            boxShadow: '0 0 20px rgba(0, 247, 255, 0.6)',
+          },
+          '50%': {
+            opacity: '.8',
+            boxShadow: '0 0 40px rgba(0, 247, 255, 0.9)',
+          },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'grid-pattern': 'linear-gradient(rgba(0, 247, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 247, 255, 0.1) 1px, transparent 1px)',
+      },
+      backgroundSize: {
+        'grid': '50px 50px',
       },
     },
   },
