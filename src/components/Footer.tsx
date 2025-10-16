@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="relative bg-dark-800 border-t border-neon-cyan/10">
       {/* Background Pattern */}
