@@ -136,6 +136,17 @@ export const icons = {
 // Work experiences
 export const experiences = [
   {
+    title: "Senior Software Engineer",
+    company_name: "ServiceNow",
+    icon: "⚡",
+    iconBg: "#1a1a24",
+    date: "May 2025 - Present",
+    points: [
+      "→ Working on performance optimization to make applications faster and more efficient",
+      "→ Building features with ServiceNow NOWUI over React - leveraging the best of both worlds",
+    ],
+  },
+  {
     title: "Senior Software Engineer-Frontend",
     company_name: "JioHotstar",
     icon: "📺",
@@ -236,6 +247,35 @@ export const projects = [
       "Progress Tracking: Visual progress bars showing campaign funding status",
       "Responsive Design: Works perfectly on desktop and mobile devices",
       "Positive UI: Subtle, uplifting design with positive color scheme"
+    ]
+  },
+  {
+    name: "LILJADEPHOTOS",
+    description: "Elegant, timeless photography that tells your unique story. Specializing in portraits, weddings, and lifestyle photography. A professional photography portfolio website showcasing beautiful moments captured with artistic vision.",
+    tags: [
+      {
+        name: "portfolio",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "photography",
+        color: "green-text-gradient",
+      },
+      {
+        name: "responsive",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "📸",
+    source_code_link: "#",
+    live_demo_link: "https://liljadephotos.vercel.app/",
+    features: [
+      "Portfolio Showcase: Beautiful gallery to display photography work",
+      "Services Section: Highlight professional photography services",
+      "About Section: Share the photographer's story and vision",
+      "Contact Form: Easy way for clients to reach out",
+      "Book Now Feature: Direct booking system for sessions",
+      "Elegant Design: Timeless UI that reflects the artistry of photography"
     ]
   },
 ];

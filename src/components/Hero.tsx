@@ -42,7 +42,6 @@ const Hero = () => {
                   'Senior Software Engineer',
                   'Full-Stack Developer',
                   'React & Node.js Expert',
-                  'TypeScript Specialist',
                   'Team Leader'
                 ]}
                 loop={true}
