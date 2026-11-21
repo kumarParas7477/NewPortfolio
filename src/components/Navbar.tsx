@@ -74,7 +74,7 @@ const Navbar = () => {
                     href={link.id === 'resume-download' ? profile.resume : `#${link.id}`}
                     download={link.id === 'resume-download' || undefined}
                     onClick={() => setOpen(false)}
-                    className="block text-[28px] font-semibold tracking-apple text-ink"
+                    className="block text-[24px] font-semibold tracking-apple text-ink"
                   >
                     {link.title}
                   </a>

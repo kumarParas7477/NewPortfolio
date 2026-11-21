@@ -9,7 +9,7 @@ const Work = () => {
   const active = lineup.find((m) => m.id === activeId) ?? lineup[0];
 
   return (
-    <section id="lineup" className="bg-paper py-20 sm:py-28">
+    <section id="lineup" className="bg-paper py-14 sm:py-28">
       <div className="wrap">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -23,7 +23,7 @@ const Work = () => {
         </motion.div>
 
         {/* Model picker */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-7 flex justify-center sm:mt-10">
           <div role="tablist" aria-label="Career models" className="flex max-w-full gap-1 overflow-x-auto rounded-full bg-paper-gray p-1">
             {lineup.map((m) => (
               <button
@@ -31,7 +31,7 @@ const Work = () => {
                 role="tab"
                 aria-selected={m.id === activeId}
                 onClick={() => setActiveId(m.id)}
-                className={`relative shrink-0 rounded-full px-4 py-2 text-[14px] transition-colors sm:px-5 ${
+                className={`relative shrink-0 rounded-full px-3.5 py-1.5 text-[13px] sm:px-5 sm:py-2 sm:text-[14px] transition-colors sm:px-5 ${
                   m.id === activeId ? 'text-ink' : 'text-ink-muted hover:text-ink'
                 }`}
               >
@@ -49,7 +49,7 @@ const Work = () => {
         </div>
 
         {/* Selected model */}
-        <div className="mt-8 overflow-hidden rounded-5xl bg-paper-gray">
+        <div className="mt-6 overflow-hidden rounded-[24px] bg-paper-gray sm:mt-8 sm:rounded-5xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
@@ -58,20 +58,20 @@ const Work = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35, ease }}
-              className="grid gap-8 p-7 sm:p-12 md:grid-cols-[0.9fr_1.1fr] md:gap-12"
+              className="grid gap-6 p-5 sm:gap-8 sm:p-12 md:grid-cols-[0.9fr_1.1fr] md:gap-12"
             >
               <div>
-                <div className={`h-20 w-20 rounded-[22px] bg-gradient-to-br ${active.color} shadow-lg`} aria-hidden="true" />
-                <div className="mt-6 flex items-center gap-3">
+                <div className={`h-12 w-12 rounded-[14px] bg-gradient-to-br sm:h-20 sm:w-20 sm:rounded-[22px] ${active.color} shadow-lg`} aria-hidden="true" />
+                <div className="mt-4 flex items-center gap-3 sm:mt-6">
                   {active.isNew && <span className="text-[14px] font-semibold text-[#bf4800]">New</span>}
                   <span className="text-[14px] text-ink-faint">{active.year}</span>
                 </div>
-                <h3 className="mt-1 text-[40px] font-semibold leading-none tracking-tightest sm:text-[56px]">
+                <h3 className="mt-1 text-[32px] font-semibold leading-none tracking-tightest sm:text-[56px]">
                   Paras <span className={`bg-gradient-to-r ${active.color} bg-clip-text text-transparent`}>{active.model}</span>
                 </h3>
-                <p className="mt-3 text-[21px] font-semibold leading-snug tracking-apple text-ink-soft">{active.company}</p>
+                <p className="mt-2 text-[17px] font-semibold leading-snug tracking-apple text-ink-soft sm:mt-3 sm:text-[21px]">{active.company}</p>
 
-                <dl className="mt-8 space-y-4 border-t border-paper-line pt-6 text-[15px]">
+                <dl className="mt-6 space-y-3 border-t border-paper-line pt-5 text-[14px] sm:mt-8 sm:space-y-4 sm:pt-6 sm:text-[15px]">
                   {[
                                         ['Role', active.title],
                     ['Shipped', `${active.date} · ${active.place}`],
@@ -87,14 +87,14 @@ const Work = () => {
 
               <div>
                 <p className="text-[14px] font-semibold uppercase tracking-wider text-ink-faint">What I did</p>
-                <ul className="mt-4 space-y-4">
+                <ul className="mt-3 space-y-3 sm:mt-4 sm:space-y-4">
                   {active.points.map((pt, i) => (
                     <motion.li
                       key={pt}
                       initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.08 * i + 0.1, duration: 0.4, ease }}
-                      className="flex gap-3 text-[17px] leading-relaxed text-ink-soft"
+                      className="flex gap-3 text-[15px] leading-relaxed text-ink-soft sm:text-[17px]"
                     >
                       <span className={`mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${active.color}`} />
                       {pt}
@@ -107,9 +107,9 @@ const Work = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="mt-20 sm:mt-28">
+        <div className="mt-14 sm:mt-28">
           <h2 className="headline text-center">From people I’ve worked with.</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2">
             {testimonials.map((t, i) => (
               <motion.figure
                 key={t.name}
@@ -119,9 +119,9 @@ const Work = () => {
                 transition={{ duration: 0.8, delay: i * 0.1, ease }}
                 className="tile flex flex-col bg-paper-gray"
               >
-                <blockquote className="flex-1 text-[19px] leading-relaxed text-ink-soft">“{t.quote}”</blockquote>
+                <blockquote className="flex-1 text-[15px] leading-relaxed text-ink-soft sm:text-[19px]">“{t.quote}”</blockquote>
                 <figcaption className="mt-6">
-                  <p className="text-[17px] font-semibold">{t.name}</p>
+                  <p className="text-[15px] font-semibold sm:text-[17px]">{t.name}</p>
                   <p className="text-[14px] text-ink-muted">{t.role}</p>
                 </figcaption>
               </motion.figure>

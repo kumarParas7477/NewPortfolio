@@ -5,12 +5,12 @@ const ease = [0.25, 0.1, 0.25, 1] as const;
 
 // The resume, laid out like a tech-specs page.
 const Resume = () => (
-  <section id="specs" className="bg-paper-gray py-20 sm:py-28">
+  <section id="specs" className="bg-paper-gray py-14 sm:py-28">
     <div className="wrap">
       <div className="flex flex-col gap-6 border-b border-paper-line pb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 className="headline">Tech Specs.</h2>
-          <p className="mt-3 text-[17px] text-ink-muted">
+          <p className="mt-2 text-[14px] text-ink-muted sm:mt-3 sm:text-[17px]">
             Paras Kumar · {profile.role} · {profile.location}
           </p>
         </div>
@@ -32,12 +32,12 @@ const Resume = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: (i % 3) * 0.05, ease }}
-            className="grid gap-2 py-7 sm:grid-cols-[200px_1fr] sm:gap-8"
+            className="grid gap-1 py-5 sm:grid-cols-[200px_1fr] sm:gap-8 sm:py-7"
           >
-            <dt className="text-[21px] font-semibold tracking-apple">{s.label}</dt>
+            <dt className="text-[13px] font-semibold uppercase tracking-wider text-ink-faint sm:text-[21px] sm:normal-case sm:tracking-apple sm:text-ink">{s.label}</dt>
             <dd>
-              <p className="text-[24px] font-semibold tracking-apple">{s.value}</p>
-              <p className="mt-1 text-[17px] text-ink-muted">{s.detail}</p>
+              <p className="text-[19px] font-semibold tracking-apple sm:text-[24px]">{s.value}</p>
+              <p className="mt-0.5 text-[14px] text-ink-muted sm:mt-1 sm:text-[17px]">{s.detail}</p>
             </dd>
           </motion.div>
         ))}

@@ -32,31 +32,31 @@
   }
 
   .eyebrow {
-    @apply text-[17px] font-semibold tracking-apple;
+    @apply text-[15px] font-semibold tracking-apple sm:text-[17px];
   }
 
   .headline {
-    @apply text-[40px] leading-[1.08] font-semibold tracking-tightest sm:text-[56px] md:text-[64px];
+    @apply text-[32px] leading-[1.1] font-semibold tracking-tightest sm:text-[56px] md:text-[64px];
   }
 
   .subhead {
-    @apply text-[19px] leading-[1.42] font-normal tracking-apple sm:text-[21px];
+    @apply text-[17px] leading-[1.47] font-normal tracking-apple sm:text-[21px];
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-accent px-[22px] py-[11px] text-[17px] font-normal text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-[18px] py-[9px] text-[15px] font-normal text-white sm:px-[22px] sm:py-[11px] sm:text-[17px] transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-accent px-[22px] py-[10px] text-[17px] font-normal text-accent transition-colors hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
+    @apply inline-flex items-center justify-center rounded-full border border-accent px-[18px] py-[8px] text-[15px] font-normal text-accent sm:px-[22px] sm:py-[10px] sm:text-[17px] transition-colors hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
   }
 
   .link {
-    @apply inline-flex items-center gap-0.5 text-[17px] text-accent-link hover:underline;
+    @apply inline-flex items-center gap-0.5 text-[15px] sm:text-[17px] text-accent-link hover:underline;
   }
 
   .link-dark {
-    @apply inline-flex items-center gap-0.5 text-[17px] text-accent-bright hover:underline;
+    @apply inline-flex items-center gap-0.5 text-[15px] sm:text-[17px] text-accent-bright hover:underline;
   }
 
   /* Apple's signature multi-hue gradient text */
@@ -75,10 +75,10 @@
   }
 
   .tile {
-    @apply rounded-4xl bg-paper p-7 sm:p-10;
+    @apply rounded-[24px] bg-paper p-5 sm:rounded-4xl sm:p-10;
   }
 
   .tile-dark {
-    @apply rounded-4xl bg-night-card p-7 text-white sm:p-10;
+    @apply rounded-[24px] bg-night-card p-5 text-white sm:rounded-4xl sm:p-10;
   }
 }

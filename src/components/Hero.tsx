@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     <>
-      <section id="top" ref={ref} className="relative overflow-hidden bg-paper pt-28 pb-16 sm:pt-36 sm:pb-24">
+      <section id="top" ref={ref} className="relative overflow-hidden bg-paper pt-24 pb-12 sm:pt-36 sm:pb-24">
         <motion.div style={{ scale, opacity }} className="wrap text-center">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -33,7 +33,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease }}
-            className="mt-3 text-[56px] font-semibold leading-[1.02] tracking-tightest sm:text-[88px] md:text-[112px]"
+            className="mt-2 text-[44px] font-semibold leading-[1.02] tracking-tightest sm:text-[88px] md:text-[112px]"
           >
             Paras Kumar.
           </motion.h1>
@@ -42,7 +42,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease }}
-            className="subhead mx-auto mt-6 max-w-[640px] text-ink-muted"
+            className="subhead mx-auto mt-4 max-w-[640px] sm:mt-6 text-ink-muted"
           >
             I’ve spent seven years on the parts of products that have to hold up under load, like JioHotstar’s ads
             during IPL and the shared libraries MakeMyTrip’s apps are built on. These days I’m at ServiceNow.
@@ -52,7 +52,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55, ease }}
-            className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-4"
+            className="mt-7 flex flex-wrap sm:mt-9 items-center justify-center gap-x-6 gap-y-4"
           >
             <a href="#projects" className="btn-primary">
               Projects
@@ -72,10 +72,10 @@ const Hero = () => {
       </section>
 
       {/* Highlights bento */}
-      <section aria-label="Highlights" className="bg-paper-gray py-20 sm:py-28">
+      <section aria-label="Highlights" className="bg-paper-gray py-14 sm:py-28">
         <div className="wrap">
           <h2 className="headline">Numbers.</h2>
-          <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-5">
             {highlights.map((h, i) => (
               <motion.div
                 key={h.value}
@@ -85,22 +85,22 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: (i % 2) * 0.1, ease }}
                 className={
                   h.tone === 'dark'
-                    ? 'tile-dark flex min-h-[260px] flex-col justify-between'
+                    ? 'tile-dark flex min-h-[150px] flex-col justify-between sm:min-h-[260px]'
                     : h.tone === 'gradient'
-                      ? 'tile flex min-h-[260px] flex-col justify-between bg-gradient-to-br from-[#fdf1f4] via-white to-[#eef4ff]'
-                      : 'tile flex min-h-[260px] flex-col justify-between'
+                      ? 'tile flex min-h-[150px] flex-col justify-between bg-gradient-to-br from-[#fdf1f4] via-white to-[#eef4ff] sm:min-h-[260px]'
+                      : 'tile flex min-h-[150px] flex-col justify-between sm:min-h-[260px]'
                 }
               >
-                <p className={`text-[17px] font-semibold ${h.tone === 'dark' ? 'text-white/60' : 'text-ink-muted'}`}>{h.unit}</p>
+                <p className={`text-[13px] font-semibold sm:text-[17px] ${h.tone === 'dark' ? 'text-white/60' : 'text-ink-muted'}`}>{h.unit}</p>
                 <div>
                   <p
-                    className={`text-[72px] font-semibold leading-none tracking-tightest sm:text-[96px] ${
+                    className={`text-[40px] font-semibold leading-none tracking-tightest sm:text-[96px] ${
                       h.tone === 'gradient' ? 'text-gradient' : ''
                     }`}
                   >
                     {h.value}
                   </p>
-                  <p className={`mt-3 max-w-[320px] text-[17px] leading-snug ${h.tone === 'dark' ? 'text-white/80' : 'text-ink-soft'}`}>
+                  <p className={`mt-2 max-w-[320px] text-[13px] leading-snug sm:mt-3 sm:text-[17px] ${h.tone === 'dark' ? 'text-white/80' : 'text-ink-soft'}`}>
                     {h.label}
                   </p>
                 </div>

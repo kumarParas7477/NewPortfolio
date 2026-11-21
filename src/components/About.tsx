@@ -11,8 +11,8 @@ const About = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
 
   return (
-    <section id="about" className="bg-paper py-20 sm:py-28">
-      <div className="wrap grid items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-16">
+    <section id="about" className="bg-paper py-14 sm:py-28">
+      <div className="wrap grid items-center gap-8 md:grid-cols-[1fr_1fr] md:gap-16">
         <motion.figure
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
@@ -20,7 +20,7 @@ const About = () => {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1, ease }}
         >
-          <div className="overflow-hidden rounded-5xl bg-paper-gray">
+          <div className="overflow-hidden rounded-[24px] bg-paper-gray sm:rounded-5xl">
             <picture>
               <source srcSet="/photos/berlin.webp" type="image/webp" />
               <motion.img
@@ -31,7 +31,7 @@ const About = () => {
                 height={1600}
                 loading="lazy"
                 decoding="async"
-                className="aspect-[3/4] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover sm:aspect-[3/4]"
               />
             </picture>
           </div>
@@ -45,11 +45,12 @@ const About = () => {
           transition={{ duration: 0.9, delay: 0.1, ease }}
         >
           <h2 className="headline">Hi, I’m Paras.</h2>
-          <p className="subhead mt-6 text-ink-muted">
+          <p className="subhead mt-4 text-ink-muted sm:mt-6">
             I live in {profile.location.split(',')[0]} and work at ServiceNow. Most evenings I’m building something of my
             own.
           </p>
-          <p className="subhead mt-4 text-ink-muted">When I’m not at a keyboard, I’m usually travelling somewhere new.</p>        </motion.div>
+          <p className="subhead mt-4 text-ink-muted">When I’m not at a keyboard, I’m usually travelling somewhere new.</p>
+        </motion.div>
       </div>
     </section>
   );

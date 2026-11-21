@@ -23,7 +23,7 @@ const UnwrapBox = () => {
       type="button"
       onClick={() => setOpened((v) => !v)}
       aria-label={opened ? 'Wrap the gift again' : 'Unwrap the gift'}
-      className="group relative mx-auto flex h-[300px] w-full max-w-[340px] items-center justify-center rounded-4xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+      className="group relative mx-auto flex h-[230px] w-full max-w-[340px] sm:h-[300px] items-center justify-center rounded-4xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
     >
       <AnimatePresence>
         {opened &&
@@ -44,7 +44,7 @@ const UnwrapBox = () => {
       <motion.span
         animate={opened ? { scale: 0.9, rotate: 0 } : { scale: 1, rotate: [0, -6, 6, -4, 0] }}
         transition={opened ? { duration: 0.3 } : { duration: 0.8, repeat: Infinity, repeatDelay: 2.4 }}
-        className="relative z-10 text-[110px] leading-none drop-shadow-[0_20px_40px_rgba(255,80,120,0.35)]"
+        className="relative z-10 text-[84px] leading-none sm:text-[110px] drop-shadow-[0_20px_40px_rgba(255,80,120,0.35)]"
       >
         {opened ? '💌' : '🎁'}
       </motion.span>
@@ -59,7 +59,7 @@ const UnwrapBox = () => {
 const Projects = () => (
   <section id="projects">
     {/* Featured: Grinlyy */}
-    <div className="bg-black py-20 text-white sm:py-28">
+    <div className="bg-black py-14 text-white sm:py-28">
       <div className="wrap">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -69,8 +69,8 @@ const Projects = () => (
           className="text-center"
         >
           <p className="eyebrow text-[#ff9f6b]">{fp.kicker}</p>
-          <h2 className="mt-2 text-[64px] font-semibold leading-none tracking-tightest sm:text-[96px]">{fp.name}</h2>
-          <p className="mt-4 text-[28px] font-semibold leading-tight tracking-apple sm:text-[40px]">
+          <h2 className="mt-2 text-[48px] font-semibold leading-none tracking-tightest sm:text-[96px]">{fp.name}</h2>
+          <p className="mt-3 text-[22px] font-semibold leading-tight tracking-apple sm:mt-4 sm:text-[40px]">
             <span className="text-gradient-warm">{fp.tagline}</span>
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
@@ -83,13 +83,13 @@ const Projects = () => (
           </div>
         </motion.div>
 
-        <div className="mt-14 grid items-center gap-5 md:grid-cols-[1.1fr_1fr]">
+        <div className="mt-10 grid items-center gap-4 sm:mt-14 sm:gap-5 md:grid-cols-[1.1fr_1fr]">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease }}
-            className="relative overflow-hidden rounded-5xl bg-gradient-to-br from-[#2a1020] via-[#1a0f1f] to-[#101428] p-6"
+            className="relative overflow-hidden rounded-[24px] bg-gradient-to-br sm:rounded-5xl from-[#2a1020] via-[#1a0f1f] to-[#101428] p-6"
           >
             <div
               aria-hidden="true"
@@ -106,8 +106,8 @@ const Projects = () => (
             transition={{ duration: 0.9, delay: 0.1, ease }}
             className="tile-dark"
           >
-            <p className="text-[19px] leading-relaxed text-white/80">{fp.description}</p>
-            <ul className="mt-8 flex flex-wrap gap-2">
+            <p className="text-[15px] leading-relaxed text-white/80 sm:text-[19px]">{fp.description}</p>
+            <ul className="mt-6 flex flex-wrap gap-2 sm:mt-8">
               {fp.stack.map((t) => (
                 <li key={t} className="rounded-full border border-night-line px-3 py-1 text-[13px] text-white/75">
                   {t}
@@ -120,11 +120,11 @@ const Projects = () => (
     </div>
 
     {/* More projects */}
-    <div className="bg-paper-gray py-20 sm:py-28">
+    <div className="bg-paper-gray py-14 sm:py-28">
       <div className="wrap">
         <h2 className="headline">Other projects.</h2>
 
-        <div className="mt-10 space-y-5 sm:mt-14">
+        <div className="mt-8 space-y-4 sm:mt-14">
           {showcase.map((p) => (
             <motion.article
               key={p.name}
@@ -132,7 +132,7 @@ const Projects = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.8, ease }}
-              className="tile grid items-center gap-8 overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:grid-cols-[0.9fr_1.1fr] md:gap-10"
+              className="tile grid items-center gap-6 overflow-hidden sm:gap-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:grid-cols-[0.9fr_1.1fr] md:gap-10"
             >
               <div>
                 <p className="flex items-center gap-2 text-[14px] font-semibold">
@@ -140,8 +140,8 @@ const Projects = () => (
                   <span className="text-ink-muted">{p.kicker}</span>
                   {p.status && <span className="font-normal text-ink-faint">· {p.status}</span>}
                 </p>
-                <h3 className="mt-2 text-[32px] font-semibold leading-tight tracking-apple">{p.name}</h3>
-                <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">{p.description}</p>
+                <h3 className="mt-2 text-[26px] font-semibold leading-tight tracking-apple sm:text-[32px]">{p.name}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted sm:mt-4 sm:text-[17px]">{p.description}</p>
                 <p className="mt-6 text-[13px] text-ink-faint">{p.stack.join(' · ')}</p>
                 {p.live && (
                   <a href={p.live} target="_blank" rel="noopener noreferrer" className="link mt-5">
@@ -161,9 +161,9 @@ const Projects = () => (
                   {p.phones.map((ph, i) => (
                     <div
                       key={ph.src}
-                      className={`w-[44%] max-w-[210px] overflow-hidden rounded-[28px] border-[5px] border-ink bg-ink shadow-[0_20px_50px_rgba(0,0,0,0.2)] ${i === 1 ? 'mt-10' : ''}`}
+                      className={`w-[42%] max-w-[210px] overflow-hidden rounded-[22px] border-[4px] sm:rounded-[28px] sm:border-[5px] border-ink bg-ink shadow-[0_20px_50px_rgba(0,0,0,0.2)] ${i === 1 ? 'mt-10' : ''}`}
                     >
-                      <img src={ph.src} alt={ph.alt} loading="lazy" decoding="async" width={600} height={1298} className="block w-full rounded-[22px]" />
+                      <img src={ph.src} alt={ph.alt} loading="lazy" decoding="async" width={600} height={1298} className="block w-full rounded-[17px] sm:rounded-[22px]" />
                     </div>
                   ))}
                 </div>
@@ -172,7 +172,7 @@ const Projects = () => (
           ))}
         </div>
 
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:mt-5 sm:gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
             <motion.article
               key={p.name}
@@ -183,10 +183,10 @@ const Projects = () => (
               whileHover={{ y: -4 }}
               className="tile flex flex-col shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
             >
-              <span className="text-[56px] leading-none">{p.glyph}</span>
-              <p className="mt-6 text-[14px] font-semibold text-ink-muted">{p.kicker}</p>
-              <h3 className="mt-1 text-[32px] font-semibold leading-tight tracking-apple">{p.name}</h3>
-              <p className="mt-4 flex-1 text-[17px] leading-relaxed text-ink-muted">{p.description}</p>
+              <span className="text-[40px] leading-none sm:text-[56px]">{p.glyph}</span>
+              <p className="mt-4 text-[13px] font-semibold text-ink-muted sm:mt-6 sm:text-[14px]">{p.kicker}</p>
+              <h3 className="mt-1 text-[26px] font-semibold leading-tight tracking-apple sm:text-[32px]">{p.name}</h3>
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink-muted sm:mt-4 sm:text-[17px]">{p.description}</p>
               <p className="mt-6 text-[13px] text-ink-faint">{p.stack.join(' · ')}</p>
               <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
                 <a href={p.live} target="_blank" rel="noopener noreferrer" className="link">
