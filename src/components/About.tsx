@@ -49,16 +49,7 @@ const About = () => {
             I live in {profile.location.split(',')[0]} and work at ServiceNow. Most evenings I’m building something of my
             own.
           </p>
-          <p className="subhead mt-4 text-ink-muted">When I’m not at a keyboard, I’m usually travelling somewhere new.</p>
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="link">
-              LinkedIn ›
-            </a>
-            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="link">
-              GitHub ›
-            </a>
-          </div>
-        </motion.div>
+          <p className="subhead mt-4 text-ink-muted">When I’m not at a keyboard, I’m usually travelling somewhere new.</p>        </motion.div>
       </div>
     </section>
   );
