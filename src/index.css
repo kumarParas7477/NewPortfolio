@@ -1,59 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-white/10;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 56px;
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    scroll-behavior: smooth;
-    @apply bg-delft_blue-100 text-white;
+    @apply bg-paper text-ink font-sans antialiased;
+    letter-spacing: -0.011em;
+    font-feature-settings: 'ss01', 'cv11';
   }
 
-  html {
-    scroll-behavior: smooth;
+  ::selection {
+    @apply bg-accent/20;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-delft_blue-200;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-delft_blue-400/50 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-delft_blue-400/70;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-cambridge_blue-400 to-delft_blue-400 bg-clip-text text-transparent;
-  }
-  
-  .glass-effect {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  .wrap {
+    @apply mx-auto w-full max-w-[1024px] px-5 sm:px-6;
   }
 
-  .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6;
+  .eyebrow {
+    @apply text-[17px] font-semibold tracking-apple;
   }
 
-  .section-subtitle {
-    @apply text-xl text-white/70 max-w-3xl mx-auto leading-relaxed;
+  .headline {
+    @apply text-[40px] leading-[1.08] font-semibold tracking-tightest sm:text-[56px] md:text-[64px];
+  }
+
+  .subhead {
+    @apply text-[19px] leading-[1.42] font-normal tracking-apple sm:text-[21px];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-[22px] py-[11px] text-[17px] font-normal text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-accent px-[22px] py-[10px] text-[17px] font-normal text-accent transition-colors hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/40;
+  }
+
+  .link {
+    @apply inline-flex items-center gap-0.5 text-[17px] text-accent-link hover:underline;
+  }
+
+  .link-dark {
+    @apply inline-flex items-center gap-0.5 text-[17px] text-accent-bright hover:underline;
+  }
+
+  /* Apple's signature multi-hue gradient text */
+  .text-gradient {
+    background: linear-gradient(90deg, #0090f7 0%, #ba62fc 45%, #f2416b 75%, #f55600 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(90deg, #ff6b6b 0%, #ffb547 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .tile {
+    @apply rounded-4xl bg-paper p-7 sm:p-10;
+  }
+
+  .tile-dark {
+    @apply rounded-4xl bg-night-card p-7 text-white sm:p-10;
   }
 }

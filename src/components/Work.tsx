@@ -1,134 +1,133 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { experiences, testimonials } from '../constants';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { lineup, testimonials } from '../constants';
+
+const ease = [0.25, 0.1, 0.25, 1] as const;
 
 const Work = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [activeId, setActiveId] = useState(lineup[0].id);
+  const active = lineup.find((m) => m.id === activeId) ?? lineup[0];
 
   return (
-    <section id="work" className="py-24 md:py-32 bg-gradient-to-b from-delft_blue-100 to-delft_blue-200 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-cambridge_blue-500/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-delft_blue-500/5 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="lineup" className="bg-paper py-20 sm:py-28">
+      <div className="wrap">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease }}
+          className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            My <span className="bg-gradient-to-r from-cambridge_blue-400 to-delft_blue-400 bg-clip-text text-transparent">Experience</span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            A journey of growth, innovation, and impact across leading technology companies
-          </p>
+          <h2 className="headline">Experience.</h2>
+          <p className="subhead mx-auto mt-4 max-w-[560px] text-ink-muted">Pick a job to see what I worked on.</p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="hidden md:block absolute left-0 md:left-8 top-0 w-0.5 h-full bg-gradient-to-b from-cambridge_blue-500/50 to-delft_blue-500/50"></div>
-
-          <div className="space-y-12">
-            {experiences.map((experience, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-                className="relative pl-0 md:pl-20"
+        {/* Model picker */}
+        <div className="mt-10 flex justify-center">
+          <div role="tablist" aria-label="Career models" className="flex max-w-full gap-1 overflow-x-auto rounded-full bg-paper-gray p-1">
+            {lineup.map((m) => (
+              <button
+                key={m.id}
+                role="tab"
+                aria-selected={m.id === activeId}
+                onClick={() => setActiveId(m.id)}
+                className={`relative shrink-0 rounded-full px-4 py-2 text-[14px] transition-colors sm:px-5 ${
+                  m.id === activeId ? 'text-ink' : 'text-ink-muted hover:text-ink'
+                }`}
               >
-                {/* Timeline dot */}
-                <div className="hidden md:block absolute left-0 md:left-8 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-cambridge_blue-500 to-delft_blue-500 rounded-full border-4 border-delft_blue-100 shadow-xl z-10 top-6"></div>
-
-                {/* Content */}
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 md:p-8 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 h-full hover:shadow-2xl"
-                >
-                    <div className="flex items-center space-x-4 mb-6 flex-row">
-                      <div 
-                        className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl flex-shrink-0"
-                        style={{ backgroundColor: experience.iconBg }}
-                      >
-                        {experience.icon}
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-xl font-bold text-white mb-1">
-                          {experience.title}
-                        </h3>
-                        <p className="text-cambridge_blue-400 font-semibold mb-1">
-                          {experience.company_name}
-                        </p>
-                        <p className="text-sm text-white/60">
-                          {experience.date}
-                        </p>
-                      </div>
-                    </div>
-                    <ul className="space-y-3 text-left mt-4">
-                      {experience.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="text-white/80 text-sm leading-relaxed">
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                </motion.div>
-              </motion.div>
+                {m.id === activeId && (
+                  <motion.span
+                    layoutId="model-pill"
+                    className="absolute inset-0 rounded-full bg-white shadow-[0_1px_6px_rgba(0,0,0,0.12)]"
+                    transition={{ type: 'spring', stiffness: 400, damping: 34 }}
+                  />
+                )}
+                <span className="relative">{m.model}</span>
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20"
-        >
-          <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
-            What People Say About Me
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 1 + index * 0.2 }}
-                whileHover={{ y: -5 }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cambridge_blue-500 to-delft_blue-500 rounded-full flex items-center justify-center text-2xl text-white mr-4">
-                    {testimonial.image}
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-cambridge_blue-400 font-semibold">
-                      {testimonial.designation}
-                    </p>
-                    <p className="text-sm text-white/60">
-                      {testimonial.company}
-                    </p>
-                  </div>
+        {/* Selected model */}
+        <div className="mt-8 overflow-hidden rounded-5xl bg-paper-gray">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.id}
+              role="tabpanel"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35, ease }}
+              className="grid gap-8 p-7 sm:p-12 md:grid-cols-[0.9fr_1.1fr] md:gap-12"
+            >
+              <div>
+                <div className={`h-20 w-20 rounded-[22px] bg-gradient-to-br ${active.color} shadow-lg`} aria-hidden="true" />
+                <div className="mt-6 flex items-center gap-3">
+                  {active.isNew && <span className="text-[14px] font-semibold text-[#bf4800]">New</span>}
+                  <span className="text-[14px] text-ink-faint">{active.year}</span>
                 </div>
-                <p className="text-white/80 leading-relaxed italic text-lg mt-4">
-                  "{testimonial.testimonial}"
-                </p>
-              </motion.div>
+                <h3 className="mt-1 text-[40px] font-semibold leading-none tracking-tightest sm:text-[56px]">
+                  Paras <span className={`bg-gradient-to-r ${active.color} bg-clip-text text-transparent`}>{active.model}</span>
+                </h3>
+                <p className="mt-3 text-[21px] font-semibold leading-snug tracking-apple text-ink-soft">{active.company}</p>
+
+                <dl className="mt-8 space-y-4 border-t border-paper-line pt-6 text-[15px]">
+                  {[
+                                        ['Role', active.title],
+                    ['Shipped', `${active.date} · ${active.place}`],
+                    ['Chip', active.chip],
+                  ].map(([k, v]) => (
+                    <div key={k} className="flex gap-4">
+                      <dt className="w-20 shrink-0 text-ink-faint">{k}</dt>
+                      <dd className="font-medium text-ink">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <div>
+                <p className="text-[14px] font-semibold uppercase tracking-wider text-ink-faint">What I did</p>
+                <ul className="mt-4 space-y-4">
+                  {active.points.map((pt, i) => (
+                    <motion.li
+                      key={pt}
+                      initial={{ opacity: 0, x: 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.08 * i + 0.1, duration: 0.4, ease }}
+                      className="flex gap-3 text-[17px] leading-relaxed text-ink-soft"
+                    >
+                      <span className={`mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br ${active.color}`} />
+                      {pt}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Testimonials */}
+        <div className="mt-20 sm:mt-28">
+          <h2 className="headline text-center">From people I’ve worked with.</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {testimonials.map((t, i) => (
+              <motion.figure
+                key={t.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.1, ease }}
+                className="tile flex flex-col bg-paper-gray"
+              >
+                <blockquote className="flex-1 text-[19px] leading-relaxed text-ink-soft">“{t.quote}”</blockquote>
+                <figcaption className="mt-6">
+                  <p className="text-[17px] font-semibold">{t.name}</p>
+                  <p className="text-[14px] text-ink-muted">{t.role}</p>
+                </figcaption>
+              </motion.figure>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

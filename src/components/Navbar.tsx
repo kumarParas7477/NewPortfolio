@@ -1,91 +1,90 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { navLinks } from '../constants';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { navLinks, profile } from '../constants';
 
 const Navbar = () => {
-  const [active, setActive] = useState('');
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
+
   return (
-    <nav className={`fixed top-0 z-20 w-full transition-all duration-300 ${
-      scrolled 
-        ? 'bg-delft_blue-100/80 backdrop-blur-xl border-b border-white/10 shadow-lg' 
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <motion.a
-            href="#"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center space-x-3 group"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-cambridge_blue-500 to-delft_blue-500 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-              <span className="text-white font-bold text-lg">P</span>
-            </div>
-            <span className="text-xl font-bold text-white hidden sm:block">Paras Kumar</span>
-          </motion.a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open ? 'bg-[rgba(251,251,253,0.8)] backdrop-blur-xl backdrop-saturate-150 border-b border-black/[0.06]' : 'bg-transparent'
+      }`}
+    >
+      <nav className="wrap flex h-12 items-center justify-between text-[12px] text-ink/80">
+        <a href="#top" className="text-[15px] font-semibold tracking-apple text-ink" onClick={() => setOpen(false)}>
+          Paras<span className="text-ink-faint">.</span>
+        </a>
 
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.id}
-                href={`#${link.id}`}
-                className={`text-sm font-medium transition-colors duration-200 relative ${
-                  active === link.id
-                    ? 'text-white'
-                    : 'text-white/70 hover:text-white'
-                }`}
-                onClick={() => setActive(link.id)}
-                whileHover={{ y: -2 }}
-              >
+        <ul className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a href={`#${link.id}`} className="transition-colors hover:text-ink">
                 {link.title}
-                {active === link.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cambridge_blue-400 to-delft_blue-400 rounded-full"
-                  />
-                )}
-              </motion.a>
-            ))}
-          </div>
+              </a>
+            </li>
+          ))}
+        </ul>
 
+        <a
+          href={profile.resume}
+          download
+          className="hidden rounded-full bg-accent px-3 py-1 text-[12px] text-white transition-colors hover:bg-accent-hover md:inline-flex"
+        >
+          Get resume
+        </a>
+
+        <button
+          type="button"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="relative -mr-2 flex h-10 w-10 items-center justify-center md:hidden"
+        >
+          <span className={`absolute h-px w-4 bg-ink transition-transform duration-300 ${open ? 'rotate-45' : '-translate-y-[4px]'}`} />
+          <span className={`absolute h-px w-4 bg-ink transition-transform duration-300 ${open ? '-rotate-45' : 'translate-y-[4px]'}`} />
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="hidden md:block"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: '100dvh' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden bg-[rgba(251,251,253,0.97)] md:hidden"
           >
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-delft_blue-900 hover:shadow-xl transition-all duration-300"
-            >
-              Get In Touch
-            </motion.a>
+            <ul className="wrap space-y-3 pt-6">
+              {[...navLinks, { id: 'resume-download', title: 'Get resume' }].map((link, i) => (
+                <motion.li key={link.id} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i + 0.1 }}>
+                  <a
+                    href={link.id === 'resume-download' ? profile.resume : `#${link.id}`}
+                    download={link.id === 'resume-download' || undefined}
+                    onClick={() => setOpen(false)}
+                    className="block text-[28px] font-semibold tracking-apple text-ink"
+                  >
+                    {link.title}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
           </motion.div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button className="text-white/70 hover:text-white transition-colors">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
