@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { featuredProject as fp, projects } from '../constants';
+import { featuredProject as fp, projects, showcase } from '../constants';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -123,7 +123,56 @@ const Projects = () => (
     <div className="bg-paper-gray py-20 sm:py-28">
       <div className="wrap">
         <h2 className="headline">Other projects.</h2>
-        <div className="mt-10 grid gap-5 sm:mt-14 md:grid-cols-2">
+
+        <div className="mt-10 space-y-5 sm:mt-14">
+          {showcase.map((p) => (
+            <motion.article
+              key={p.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.8, ease }}
+              className="tile grid items-center gap-8 overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:grid-cols-[0.9fr_1.1fr] md:gap-10"
+            >
+              <div>
+                <p className="flex items-center gap-2 text-[14px] font-semibold">
+                  <span className={`h-2 w-2 rounded-full ${p.kicker === 'Live' ? 'bg-[#30d158]' : 'bg-[#ff9f0a]'}`} aria-hidden="true" />
+                  <span className="text-ink-muted">{p.kicker}</span>
+                  {p.status && <span className="font-normal text-ink-faint">· {p.status}</span>}
+                </p>
+                <h3 className="mt-2 text-[32px] font-semibold leading-tight tracking-apple">{p.name}</h3>
+                <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">{p.description}</p>
+                <p className="mt-6 text-[13px] text-ink-faint">{p.stack.join(' · ')}</p>
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="link mt-5">
+                    {p.liveLabel ?? 'Live site'} <Chevron />
+                  </a>
+                )}
+              </div>
+
+              {p.image && (
+                <a href={p.live} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-2xl border border-black/[0.06] bg-black shadow-[0_20px_50px_rgba(0,0,0,0.18)] transition-transform duration-500 hover:scale-[1.02]">
+                  <img src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width={1600} height={1000} className="aspect-[16/10] w-full object-cover" />
+                </a>
+              )}
+
+              {p.phones && (
+                <div className="flex items-start justify-center gap-4 sm:gap-6">
+                  {p.phones.map((ph, i) => (
+                    <div
+                      key={ph.src}
+                      className={`w-[44%] max-w-[210px] overflow-hidden rounded-[28px] border-[5px] border-ink bg-ink shadow-[0_20px_50px_rgba(0,0,0,0.2)] ${i === 1 ? 'mt-10' : ''}`}
+                    >
+                      <img src={ph.src} alt={ph.alt} loading="lazy" decoding="async" width={600} height={1298} className="block w-full rounded-[22px]" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
             <motion.article
               key={p.name}

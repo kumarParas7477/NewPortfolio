@@ -148,6 +148,45 @@ export const featuredProject = {
   glyphs: ['🎁', '💐', '🎈', '🪅', '❄️', '🎂', '💌', '🧸'],
 };
 
+// Larger cards with screenshots, shown above the smaller projects.
+export type Showcase = {
+  name: string;
+  kicker: string;
+  status?: string;
+  description: string;
+  stack: string[];
+  live?: string;
+  liveLabel?: string;
+  image?: { src: string; alt: string };
+  phones?: { src: string; alt: string }[];
+};
+
+export const showcase: Showcase[] = [
+  {
+    name: 'RentMaps',
+    kicker: 'Live',
+    description:
+      'Real rents on a map, posted anonymously by renters and owners. No brokers, no sign-up. Running in cities across India, the US, the UK, Germany, the UAE and Singapore.',
+    stack: ['Next.js', 'MapLibre GL', 'Turso (SQLite)', 'Telegram + email alerts'],
+    live: 'https://rentmaps.xyz/',
+    image: { src: '/projects/rentmaps.webp', alt: 'RentMaps showing a dark 3D map of Bengaluru with rent filters' },
+  },
+  {
+    name: 'Expense Tracker',
+    kicker: 'In progress',
+    status: 'I use it every day',
+    description:
+      'On Android it reads bank and UPI SMS on the device, pulls out the amount and merchant, and asks you to confirm with one tap. Then it shows where the money went, month by month. Also installs as a web app.',
+    stack: ['React Native (Expo)', 'Native SMS module', 'FastAPI', 'Postgres'],
+    live: 'https://expense-tracker-web-henna-omega.vercel.app',
+    liveLabel: 'Try the web app',
+    phones: [
+      { src: '/projects/expense-home.webp', alt: 'Expense Tracker home screen with monthly spend and category ring' },
+      { src: '/projects/expense-analysis.webp', alt: 'Expense Tracker analysis screen with spending trend' },
+    ],
+  },
+];
+
 export const projects: Project[] = [
   {
     name: 'GiveHope',
