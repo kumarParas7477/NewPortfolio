@@ -75,7 +75,7 @@ const Work = () => {
                   {[
                                         ['Role', active.title],
                     ['Shipped', `${active.date} · ${active.place}`],
-                    ['Chip', active.chip],
+                    ['Focus', active.chip],
                   ].map(([k, v]) => (
                     <div key={k} className="flex gap-4">
                       <dt className="w-20 shrink-0 text-ink-faint">{k}</dt>

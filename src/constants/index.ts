@@ -21,8 +21,8 @@ export const navLinks = [
 export const highlights = [
   { value: '7+', unit: 'years', label: 'across ServiceNow, JioHotstar, MakeMyTrip, Fewcents and IBM.', tone: 'dark' },
   { value: '20M+', unit: 'ad impressions / day', label: 'served by the Ads SDK I owned at JioHotstar.', tone: 'light' },
-  { value: '50%', unit: 'faster QA + dev', label: 'from a shared component library at MakeMyTrip.', tone: 'light' },
-  { value: '17%', unit: 'revenue share lift', label: 'from midroll ads on React CTV apps.', tone: 'gradient' },
+  { value: '50%', unit: 'faster QA + dev', label: 'from shared libraries every brand at MakeMyTrip builds on.', tone: 'light' },
+  { value: '17%', unit: 'revenue share lift', label: 'after adding midroll ads to JioHotstar’s TV apps.', tone: 'gradient' },
 ] as const;
 
 // The career, presented as a product lineup. Newest first.
@@ -36,13 +36,13 @@ export const lineup = [
     title: 'Senior Software Engineer',
     date: 'May 2025 – Present',
     place: 'Hyderabad',
-    chip: 'Lit.js Web Components',
+    chip: 'Platform architecture, performance',
     color: 'from-[#5e5ce6] to-[#bf5af2]',
     points: [
-      'Moving platform features from React to Lit.js Web Components, keeping everything working and making it faster.',
-      'Going through performance metrics every day and fixing whatever slows workspaces down.',
-      'Improving sync and resource handling for large enterprise customers like DHL.',
-      'Looking after the component library that every workspace shares.',
+      'Re-architecting core platform features into framework-agnostic components any team can reuse, with no loss of features and better performance.',
+      'Tracking performance metrics daily and fixing the bottlenecks that slow customer workspaces down.',
+      'Improving data sync and resource management for large enterprise customers like DHL.',
+      'Owning a shared library that every workspace depends on.',
     ],
   },
   {
@@ -53,13 +53,13 @@ export const lineup = [
     title: 'Senior Software Engineer',
     date: 'Apr 2024 – May 2025',
     place: 'Bengaluru',
-    chip: 'React Native + CTV',
+    chip: 'Ads SDK, high-traffic systems',
     color: 'from-[#0a84ff] to-[#64d2ff]',
     points: [
-      'Worked on mobile ads in React Native through IPL, at 20M+ ad impressions a day.',
-      'Owned the JavaScript side of the Ads SDK on web, mobile web and TV.',
-      'Added midroll ads to the TV apps, which raised revenue share by 17%.',
-      'Added caching so display ads load faster on TV.',
+      'Built ad features that held up through IPL traffic, at 20M+ ad impressions a day.',
+      'Owned the cross-platform Ads SDK module that runs the full ad lifecycle on web, mobile web and TV.',
+      'Designed the midroll ad integration for TV, which raised revenue share by 17%.',
+      'Added a caching layer so display ads render faster on TV.',
     ],
   },
   {
@@ -70,10 +70,10 @@ export const lineup = [
     title: 'Software Engineer II',
     date: 'May 2022 – Apr 2024',
     place: 'Gurugram',
-    chip: 'Shared design system',
+    chip: 'Shared libraries, caching',
     color: 'from-[#ff375f] to-[#ff9f0a]',
     points: [
-      "Built one npm component library for every brand's React and React Native apps. QA and dev got 50% faster.",
+      "Built one shared library used across every brand's web and mobile apps. QA and dev got 50% faster.",
       'Pulled shared business logic into its own library, which saved about 30% of dev time.',
       'Wrote a caching layer for API calls, keyed on booking ID.',
       'Built the Trips summary screen that groups bookings by date and place.',
@@ -88,7 +88,7 @@ export const lineup = [
     title: 'Software Engineer',
     date: 'Sep 2021 – May 2022',
     place: 'Remote',
-    chip: 'Stripe + Social login',
+    chip: 'Payments, auth, growth',
     color: 'from-[#30d158] to-[#66d4cf]',
     points: [
       'Added social logins, and successful logins went up 12%.',
@@ -104,7 +104,7 @@ export const lineup = [
     title: 'Application Developer',
     date: 'Jul 2019 – Sep 2021',
     place: 'Bengaluru',
-    chip: 'ActionScript → React',
+    chip: 'Legacy migration',
     color: 'from-[#8e8e93] to-[#c7c7cc]',
     points: [
       'Rewrote an old ActionScript app in React, covering 160+ AT&T product catalogs.',
@@ -116,13 +116,14 @@ export const lineup = [
 
 // The resume, as a tech-specs sheet.
 export const specs = [
+  { label: 'System design', value: 'LLD, HLD, design patterns', detail: 'SDKs, shared libraries and platform architecture' },
+  { label: 'Performance', value: 'Caching, profiling, load time', detail: 'Daily performance metrics at ServiceNow' },
+  { label: 'Back end', value: 'REST APIs, Next.js server routes', detail: 'Payments (Stripe, Razorpay), email, auth' },
+  { label: 'Databases', value: 'MySQL, MongoDB, Postgres', detail: 'Supabase on Grinlyy' },
   { label: 'Languages', value: 'TypeScript, JavaScript', detail: 'HTML, CSS' },
-  { label: 'Frameworks', value: 'React, React Native, Lit', detail: 'Next.js, Web Components' },
-  { label: 'Performance', value: 'Caching, bundle size, render profiling', detail: 'Daily semaphore metrics at ServiceNow' },
-  { label: 'Testing', value: 'Jest, Playwright', detail: 'ESLint and Husky pre-commit checks' },
-  { label: 'Back end', value: 'REST APIs, system design (LLD / HLD)', detail: 'Design patterns' },
-  { label: 'Databases', value: 'MySQL, MongoDB', detail: 'Supabase (Postgres) on Grinlyy' },
-  { label: 'Tooling', value: 'Git, CI/CD, Docker, Sentry', detail: 'Vercel' },
+  { label: 'Platforms', value: 'Web, mobile, TV', detail: 'React, React Native, Web Components' },
+  { label: 'Quality', value: 'Jest, Playwright', detail: 'Code review, pre-commit checks, Sentry monitoring' },
+  { label: 'Delivery', value: 'CI/CD, Docker, Git', detail: 'Vercel, Agile' },
   { label: 'AI', value: 'Agentic AI, RAG, prompt engineering', detail: 'Use AI tools daily for development' },
 ];
 
@@ -142,7 +143,7 @@ export const featuredProject = {
   tagline: 'Love, unwrapped one tap at a time.',
   description:
     "E-cards people actually play with. Pop a piñata or shake a snow globe, and your note shows up at the end. There are 60+ designs so far, with payments and email delivery built in.",
-  stack: ['Next.js', 'React 19', 'TypeScript', 'Supabase', 'Razorpay', 'Resend', 'Vercel'],
+  stack: ['Postgres (Supabase)', 'Payments (Razorpay)', 'Email (Resend)', 'Next.js API routes', 'TypeScript', 'Vercel'],
   live: 'https://grinlyy.com',
   glyphs: ['🎁', '💐', '🎈', '🪅', '❄️', '🎂', '💌', '🧸'],
 };
